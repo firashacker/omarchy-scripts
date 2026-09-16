@@ -14,8 +14,9 @@ tweaking of config files required.
 | ------ | ------------ |
 | `apply-omarchy-keybindings.sh` | Remaps Hyprland keybindings (main menu → `SUPER+A`, close window → `SUPER+Q`, browser → `SUPER+W`, thunar → `SUPER+F`, fullscreen → `SUPER+SHIFT+F`, scratchpad reshuffle, floating terminal on `SUPER+SHIFT+RETURN`, system menu → `SUPER+X`, capture menu → `SUPER+S`, floating toggle → `SUPER+SPACE`, theme menu → `SUPER+T`) and validates with `hyprctl reload` + `hyprctl configerrors`. |
 | `apply-omarchy-tmux.sh` | Blends a custom tmux setup into `~/.config/tmux/tmux.conf`: TPM + plugins (tmux-sensible, vim-tmux-navigator, tmux-yank), extra bindings, and pane/window behaviour — all on top of Omarchy's stock theming. |
-| `apply-omarchy-tmux-autostart.sh` | Makes every new terminal attach to (or create) a `main` tmux session by injecting a guarded block into `~/.bashrc` (skips nested shells automatically). |
+| `apply-omarchy-tmux-autostart.sh` | Makes every new terminal start its own fresh tmux session by injecting a guarded block into `~/.bashrc` (skips nested shells automatically). |
 | `install-helium-browser.sh` | Replaces the default Chromium with `helium-browser-bin` from the AUR and sets it as the default browser. |
+| `mount-disk-by-label.sh` | Prompts for a disk's label, verifies a device with that label exists, and adds a `LABEL="..."  defaults,nofail` entry to `/etc/fstab` with an optional mount test. |
 | `omarchy-remove-preinstalls` | Removes preinstalled Omarchy web apps and desktop applications. |
 | `omarchy-webapp-remove-all` | Removes all installed web-app launchers. |
 | `tmux.conf` | The blended reference tmux configuration (the target of `apply-omarchy-tmux.sh`). |

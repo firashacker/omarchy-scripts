@@ -23,15 +23,15 @@ fi
 
 cat >> "$BASHRC" <<'EOF'
 # Omarchy tmux autostart:start
-# Attach to (or create) the "main" tmux session in every new terminal.
-# Skip when already inside tmux or tmux is unavailable.
+# Start a fresh tmux session in every new terminal (each window gets its own
+# session). Skip when already inside tmux or tmux is unavailable.
 if [[ -z "${TMUX:-}" ]] && command -v tmux >/dev/null 2>&1; then
-  exec tmux new -A -s main
+  exec tmux new
 fi
 # Omarchy tmux autostart:end
 EOF
 
 echo "Tmux autostart block appended to: $BASHRC"
 
-echo "Done. Open a new terminal to attach to tmux session 'main'."
+echo "Done. Open a new terminal to start a fresh tmux session (each terminal gets its own)."
 echo "If tmux ever fails to start, remove the block between '$START' and '$END' in $BASHRC (or run with a backup restored)."
