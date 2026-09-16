@@ -88,4 +88,6 @@ else
   echo "Note: hyprctl not found; skipping reload. Changes apply on next login."
 fi
 
+sudo pacman -Sy thunar
+
 echo "Done."
