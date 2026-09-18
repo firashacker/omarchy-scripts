@@ -13,14 +13,19 @@ tweaking of config files required.
 | Script | What it does |
 | ------ | ------------ |
 | `add-arabic-layout.sh` | Adds an Arabic keyboard layout (`us,ara`, switched with `Alt+Shift`) via a guarded block in `~/.config/hypr/input.lua`, reloads and validates with `hyprctl`, and rolls back if Hyprland rejects the config. |
+| `add-tmux-kill-detached-alias.sh` | Adds a `tmux-kill-detached` alias to `~/.bashrc` (guarded block) that kills all tmux sessions with no attached client. |
+| `add-window-blur.sh` | Enables Hyprland window blur via a guarded block in `~/.config/hypr/looknfeel.lua` (overrides Omarchy's stock `decoration.blur`), reloads and validates with `hyprctl`, and rolls back on error. Values are env-tunable (`BLUR_SIZE`, `BLUR_PASSES`, `XRAY`, ...). |
 | `allow-root-gui.sh` | Installs `xorg-xhost` if missing and enables root-run GUI apps to display by adding `xhost +local:` to the Hyprland autostart. |
-| `apply-omarchy-keybindings.sh` | Remaps Hyprland keybindings (main menu → `SUPER+A`, close window → `SUPER+Q`, browser → `SUPER+W`, thunar → `SUPER+F`, fullscreen → `SUPER+SHIFT+F`, scratchpad reshuffle, floating terminal on `SUPER+SHIFT+RETURN`, system menu → `SUPER+X`, capture menu → `SUPER+S`, floating toggle → `SUPER+SPACE`, theme menu → `SUPER+T`) and validates with `hyprctl reload` + `hyprctl configerrors`. |
+| `apply-omarchy-keybindings.sh` | Remaps Hyprland keybindings (main menu → `SUPER+A`, close window → `SUPER+Q`, browser → `SUPER+W`, default file manager → `SUPER+F`, fullscreen → `SUPER+SHIFT+F`, scratchpad reshuffle, floating terminal on `SUPER+SHIFT+RETURN`, system menu → `SUPER+X`, capture menu → `SUPER+S`, floating toggle → `SUPER+SPACE`, theme menu → `SUPER+T`) and validates with `hyprctl reload` + `hyprctl configerrors`. |
 | `apply-omarchy-tmux.sh` | Blends a custom tmux setup into `~/.config/tmux/tmux.conf`: TPM + plugins (tmux-sensible, vim-tmux-navigator, tmux-yank), extra bindings, and pane/window behaviour — all on top of Omarchy's stock theming. |
 | `apply-omarchy-tmux-autostart.sh` | Makes every new terminal start its own fresh tmux session by injecting a guarded block into `~/.bashrc` (skips nested shells automatically). |
 | `install-helium-browser.sh` | Replaces the default Chromium with `helium-browser-bin` from the AUR and sets it as the default browser. |
+| `install-kitty-terminal.sh` | Installs kitty and registers `kitty.desktop` as the XDG default terminal. |
+| `install-nautilus-open-terminal.sh` | Installs the `nautilus-open-any-terminal` extension from Omarchy's repo (adds "Open in Terminal" to Nautilus' context menu), pins it to kitty, and restarts Nautilus. |
 | `mount-disk-by-label.sh` | Prompts for a disk's label, verifies a device with that label exists, and adds a `LABEL="..."  defaults,nofail` entry to `/etc/fstab` with an optional mount test. |
 | `omarchy-remove-preinstalls` | Removes preinstalled Omarchy web apps and desktop applications. |
 | `omarchy-webapp-remove-all` | Removes all installed web-app launchers. |
+| `set-window-opacity.sh` | Prompts for an inactive-window opacity (0.0–1.0), applies it via a guarded block in `~/.config/hypr/looknfeel.lua`, reloads and validates with `hyprctl`, and rolls back on error. |
 | `tmux.conf` | The blended reference tmux configuration (the target of `apply-omarchy-tmux.sh`). |
 
 ## Usage
@@ -29,11 +34,16 @@ Each script is self-contained and safe to re-run:
 
 ```bash
 ./add-arabic-layout.sh
+./add-tmux-kill-detached-alias.sh
+./add-window-blur.sh
 ./allow-root-gui.sh
 ./apply-omarchy-keybindings.sh
 ./apply-omarchy-tmux.sh
 ./apply-omarchy-tmux-autostart.sh
 ./install-helium-browser.sh
+./install-kitty-terminal.sh
+./install-nautilus-open-terminal.sh
+./set-window-opacity.sh
 ```
 
 What every script does for you:

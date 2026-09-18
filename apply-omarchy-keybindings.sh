@@ -39,9 +39,9 @@ o.bind("SUPER + Q", "Close window", hl.dsp.window.close())
 -- 3. Browser on SUPER+W (was close window)
 o.bind("SUPER + W", "Browser", { omarchy = "browser" })
 
--- 4. File manager: SUPER+F -> thunar (was full screen)
+-- 4. File manager: SUPER+F opens the default file manager (was full screen)
 hl.unbind("SUPER + F")
-o.bind("SUPER + F", "File manager", { launch = "thunar" })
+o.bind("SUPER + F", "File manager", { omarchy = "file-manager" })
 
 -- 5. Full screen: SUPER+SHIFT+F (was file manager)
 hl.unbind("SUPER + SHIFT + F")
@@ -88,22 +88,6 @@ else
   echo "Note: hyprctl not found; skipping reload. Changes apply on next login."
 fi
 
-sudo pacman -Sy thunar xarchiver thunar-archive-plugin
-
-echo '<?xml version="1.0" encoding="UTF-8"?>
-<actions>
-<action>
-	<icon>utilities-terminal</icon>
-	<name>Open Terminal Here</name>
-	<submenu></submenu>
-	<unique-id>1789520589062287-1</unique-id>
-	<command>foot </command>
-	<description>Example for a custom action</description>
-	<range></range>
-	<patterns>*</patterns>
-	<startup-notify/>
-	<directories/>
-</action>
-</actions>' > ~/.config/Thunar/uca.xml
-
 echo "Done."
+echo "Note: SUPER+F launches the default file manager (currently: nautilus)."
+echo "Set another as default with: xdg-mime default <fm>.desktop inode/directory"
