@@ -41,7 +41,7 @@ o.bind("SUPER + W", "Browser", { omarchy = "browser" })
 
 -- 4. File manager: SUPER+F opens the default file manager (was full screen)
 hl.unbind("SUPER + F")
-o.bind("SUPER + F", "File manager", { omarchy = "file-manager" })
+o.bind("SUPER + F", "File manager", "xdg-open $HOME")
 
 -- 5. Full screen: SUPER+SHIFT+F (was file manager)
 hl.unbind("SUPER + SHIFT + F")
