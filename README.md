@@ -12,6 +12,8 @@ tweaking of config files required.
 
 | Script | What it does |
 | ------ | ------------ |
+| `add-arabic-layout.sh` | Adds an Arabic keyboard layout (`us,ara`, switched with `Alt+Shift`) via a guarded block in `~/.config/hypr/input.lua`, reloads and validates with `hyprctl`, and rolls back if Hyprland rejects the config. |
+| `allow-root-gui.sh` | Installs `xorg-xhost` if missing and enables root-run GUI apps to display by adding `xhost +local:` to the Hyprland autostart. |
 | `apply-omarchy-keybindings.sh` | Remaps Hyprland keybindings (main menu → `SUPER+A`, close window → `SUPER+Q`, browser → `SUPER+W`, thunar → `SUPER+F`, fullscreen → `SUPER+SHIFT+F`, scratchpad reshuffle, floating terminal on `SUPER+SHIFT+RETURN`, system menu → `SUPER+X`, capture menu → `SUPER+S`, floating toggle → `SUPER+SPACE`, theme menu → `SUPER+T`) and validates with `hyprctl reload` + `hyprctl configerrors`. |
 | `apply-omarchy-tmux.sh` | Blends a custom tmux setup into `~/.config/tmux/tmux.conf`: TPM + plugins (tmux-sensible, vim-tmux-navigator, tmux-yank), extra bindings, and pane/window behaviour — all on top of Omarchy's stock theming. |
 | `apply-omarchy-tmux-autostart.sh` | Makes every new terminal start its own fresh tmux session by injecting a guarded block into `~/.bashrc` (skips nested shells automatically). |
@@ -26,6 +28,8 @@ tweaking of config files required.
 Each script is self-contained and safe to re-run:
 
 ```bash
+./add-arabic-layout.sh
+./allow-root-gui.sh
 ./apply-omarchy-keybindings.sh
 ./apply-omarchy-tmux.sh
 ./apply-omarchy-tmux-autostart.sh
@@ -50,8 +54,9 @@ new one installed in its place.
 ## Requirements
 
 - An Omarchy installation (for the keybinding and tmux scripts)
-- `hyprctl` for keybinding validation
+- `hyprctl` for keybinding and layout validation
 - `yay` for installing AUR packages (`install-helium-browser.sh`)
+- `xorg-xhost` for `allow-root-gui.sh` (installed automatically if missing)
 - TPM is installed automatically by `apply-omarchy-tmux.sh`
 
 ## Notes
