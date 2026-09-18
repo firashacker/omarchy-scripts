@@ -90,4 +90,20 @@ fi
 
 sudo pacman -Sy thunar xarchiver thunar-archive-plugin
 
+echo '<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1789520589062287-1</unique-id>
+	<command>foot </command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+</actions>' > ~/.config/Thunar/uca.xml
+
 echo "Done."
